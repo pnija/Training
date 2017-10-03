@@ -37,8 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_extensions',
     'Training_app',
+    'django_extensions',
+
 ]
 
 MIDDLEWARE = [
@@ -71,6 +72,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'training.wsgi.application'
 
+#graph settings
+
+GRAPH_MODELS = {}
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
