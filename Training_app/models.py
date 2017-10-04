@@ -16,13 +16,10 @@ class Department(models.Model):
 class EmployeCategory(models.Model):
     category_name = models.CharField(max_length=255)
 
-class Employee(models.Model):
-    employee_name = models.CharField(max_length=255)
-    user = models.ForeignKey(User)
-
 class MasterEmployes(models.Model):
+    employee_code = models.IntegerField(primary_key=True)
+    employee_name = models.CharField(max_length=255)
     category = models.ForeignKey(EmployeCategory)
-    employee = models.ForeignKey(Employee)
     department = models.ForeignKey(Department)
     designation = models.ForeignKey(MasterDesignations)
 
@@ -44,3 +41,14 @@ class SkillDesignationMapping(models.Model):
     responsibilities = models.CharField(max_length=255)
     reporting_to = models.CharField(max_length=255)
     authority = models.CharField(max_length=255)
+
+class EmployeeSkillMapping(models.Model):
+    skill = models.ForeignKey(SkillDesignationMapping)
+    competence = models.FloatField(default=None)
+    qc_inspector = models.ForeignKey(MasterEmployes)
+    current_level = models.FloatField(default=None)
+    skill_gap = models.FloatField(default=None)
+
+class TrainingSkillRequired(models.Model):
+    skill = models.ForeignKey(SkillDesignationMapping)
+    required_level = models.FloatField(default=None)
