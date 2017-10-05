@@ -63,7 +63,6 @@ class MasterSkills(models.Model):
     skill = models.CharField(max_length=255)
     training_type = models.ForeignKey(SkillTrainingTypes, related_name='get_skills_by_training_type')
     group = models.ForeignKey(SkillGroups, related_name='get_skills_by_groups')
-    required_level = models.FloatField(default=None, null=True, blank=True)
 
     def __unicode__(self):
         return self.skill
@@ -82,8 +81,7 @@ class SkillDesignationMapping(models.Model):
 
 
 class EmployeeSkillMapping(models.Model):
-    skill = models.ForeignKey(SkillDesignationMapping, related_name='get_employee_skill_mapping_by_designation_skills')
-    competence = models.FloatField(default=None)
+    designation_skill = models.ForeignKey(SkillDesignationMapping, related_name='get_employee_skill_mapping_by_designation_skills')
     qc_inspector = models.ForeignKey(MasterEmployees, related_name='get_employee_skill_mapping_by_employee')
     current_level = models.FloatField(default=None)
     skill_gap = models.FloatField(default=None)
@@ -93,10 +91,9 @@ class EmployeeSkillMapping(models.Model):
 
 
 class TrainingSkillTracking(models.Model):
-    designation = models.ForeignKey(MasterDesignations, related_name='get_skill_training_tracking_by_designation')
-    skill = models.ForeignKey(SkillDesignationMapping, related_name='get_skill_training_tracking_by_skills')
-    required_level = models.FloatField(default=None)
-    skill_needed = models.FloatField(default=None)
+    designation_skill = models.ForeignKey(SkillDesignationMapping, related_name='get_skill_training_tracking_by_designation_skills')
+    training_needed = models.FloatField(default=None)
+    updated_date = models.DateField(auto_now=True)
 
     def __unicode__(self):
         return self.skill.designation.designation_name
@@ -118,3 +115,8 @@ class TrainingAttendance(models.Model):
 
     def __unicode__(self):
         return self.skill.skill
+
+class TotalTrainingRequirement(models.Model):
+    skill = models.ForeignKey(MasterSkills,related_name='get_required_training_in_skills')
+    training_required = models.FloatField(default=None, null=True, blank=True)
+

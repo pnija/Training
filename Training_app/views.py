@@ -18,3 +18,7 @@ class AddUserView(FormView):
     def form_valid(self, form):
         form.save()
         return super(AddUserView, self).form_valid(form)
+
+class EmployeeProfileView(TemplateView):
+    template_name = ''
+
