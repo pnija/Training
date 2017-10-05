@@ -20,5 +20,5 @@ class AddUserView(FormView):
         return super(AddUserView, self).form_valid(form)
 
 class EmployeeProfileView(TemplateView):
-    template_name = ''
+    template_name = 'profile.html'
 

@@ -5812,9 +5812,10 @@ body {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.58);
-  z-index: 1000; }
+  z-index: 1000;
+  cursor: pointer; }
 
-.user-avatar {
+.user-avatar, .user-avatar-pic {
   width: 100%;
   display: block;
   position: relative;
@@ -5822,6 +5823,22 @@ body {
   max-width: 150px;
   border-radius: 5px;
   max-height: 150px; }
+
+.user-avatar-pic {
+  max-width: 100px !important; }
+
+.profiebx {
+  background-color: #e2e2e2;
+  margin-bottom: 15px; }
+
+.user-bx {
+  margin-top: 50px; }
+
+.full-width {
+  width: 100%;
+  position: relative;
+  margin-bottom: 15px;
+  display: inline-block; }
 
 .container-box {
   width: 100%;
@@ -6056,5 +6073,61 @@ body {
         font-weight: 700; }
       .container-box table.tabel-custom td:last-child {
         border-bottom: 2px solid #ccc; } }
+@media (max-width: 767px) {
+  .user-bx {
+    margin-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+    display: block;
+    position: relative; }
+
+  .container-box {
+    width: 100%;
+    display: block;
+    position: relative; }
+    .container-box .aside-menu {
+      display: block;
+      position: fixed !important;
+      z-index: 1030;
+      float: left;
+      background: #2e3648;
+      width: 240px;
+      height: 100%;
+      left: -100%;
+      -webkit-transition: all 300ms ease-in-out;
+      -o-transition: all 300ms ease-in-out;
+      transition: all 300ms ease-in-out; }
+      .container-box .aside-menu.open {
+        left: 0px; }
+    .container-box .content-bx {
+      width: 100%;
+      padding-left: 0px;
+      position: relative;
+      min-height: 100vh; }
+      .container-box .content-bx .top-box {
+        background-color: #6887ff;
+        display: block;
+        position: fixed;
+        z-index: 1000;
+        left: 0px;
+        right: 0px;
+        height: 65px;
+        padding: 0px 15px;
+        text-align: right; }
+        .container-box .content-bx .top-box .menu-responsive {
+          position: relative;
+          margin: 10px 0px;
+          padding: 0px;
+          float: left;
+          display: block; }
+    .container-box .footer-box {
+      position: relative;
+      display: block;
+      bottom: 0px;
+      left: initial;
+      font-size: 12px;
+      right: 0px;
+      padding: 15px;
+      color: #949494; } }
 
 /*# sourceMappingURL=admin.css.map */

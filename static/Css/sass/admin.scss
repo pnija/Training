@@ -16,6 +16,7 @@ body{
     height: 100%;
     background-color: rgba(0, 0, 0, 0.58);
     z-index: 1000;
+    cursor: pointer;
 }
 .user-avatar{
     width: 100%;
@@ -25,6 +26,23 @@ body{
     max-width: 150px;
     border-radius: 5px;
     max-height: 150px;
+}
+.user-avatar-pic{
+    max-width: 100px !important;
+    @extend .user-avatar
+}
+.profiebx{
+    background-color: #e2e2e2;
+    margin-bottom: 15px;
+}
+.user-bx{
+    margin-top: 50px;
+}
+.full-width{
+    width: 100%;
+    position: relative;
+    margin-bottom: 15px;
+    display: inline-block;
 }
 .container-box{
     width: 100%;
@@ -328,6 +346,78 @@ body{
             }
         }
 
+        
+    }
+}
+
+@media(max-width: $grid-sm){
+    .user-bx{
+        margin-top: 20px;
+        padding-bottom: 20px;
+        text-align: center;
+        display: block;
+        position: relative;
+    }
+    .container-box{
+        width: 100%;
+        display: block;
+        position: relative;
+
+        .aside-menu{
+            display: block;
+            position: fixed!important;
+            z-index: 1030;
+            float: left;
+            background: #2e3648;
+            width: 240px;
+            height: 100%;
+            left: -100%;
+            @include transition(all 300ms ease-in-out);
+
+            &.open{
+                left: 0px;
+            }
+
+        }
+        
+        .content-bx {
+            width: 100%;
+            padding-left: 0px;
+            position: relative;
+            min-height: 100vh;
+
+            .top-box {
+                background-color: #6887ff;
+                display: block;
+                position: fixed;
+                z-index: 1000;
+                left: 0px;
+                right: 0px;
+                height: 65px;
+                padding: 0px 15px;
+                text-align: right;
+
+                .menu-responsive{
+                    position: relative;
+                    margin: 10px 0px;
+                    padding: $padz;
+                    float: left;
+                    display: block;
+                }
+            }
+
+        }
+
+        .footer-box {
+            position: relative;
+            display: block;
+            bottom: 0px;
+            left: initial;
+            font-size: 12px;
+            right: 0px;
+            padding: 15px;
+            color: #949494;
+        }
         
     }
 }
