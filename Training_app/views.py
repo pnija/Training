@@ -9,3 +9,5 @@ class HomeView(TemplateView):
 
 class AddUserView(TemplateView):
     template_name = 'form.html'
+
+
