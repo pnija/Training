@@ -33,6 +33,7 @@ class MasterSkills(models.Model):
     skill = models.CharField(max_length=255)
     training_type = models.ForeignKey(SkillTrainingTypes)
     group = models.ForeignKey(SkillGroups)
+    required_level = models.FloatField(default=None, null=True, blank=True)
 
 class SkillDesignationMapping(models.Model):
     designation = models.ForeignKey(MasterDesignations)
@@ -49,6 +50,20 @@ class EmployeeSkillMapping(models.Model):
     current_level = models.FloatField(default=None)
     skill_gap = models.FloatField(default=None)
 
-class TrainingSkillRequired(models.Model):
+class TrainingSkillTracking(models.Model):
+    designation = models.ForeignKey(MasterDesignations)
     skill = models.ForeignKey(SkillDesignationMapping)
     required_level = models.FloatField(default=None)
+    skill_needed = models.FloatField(default=None)
+
+class SkillTrainingShedule(models.Model):
+    skill = models.ForeignKey(MasterSkills)
+    trainer_designation = models.ForeignKey(MasterDesignations)
+    trainer_name = models.CharField(max_length=255)
+    plan_date = models.DateField()
+    actual_date = models.DateField()
+
+class TrainingAttendance(models.Model):
+    skill = models.ForeignKey(MasterSkills)
+    trained_date = models.DateField()
+    trainee = models.ForeignKey(MasterEmployes)
