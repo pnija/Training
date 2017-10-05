@@ -17,4 +17,3 @@ admin.site.register(SkillTrainingShedule)
 admin.site.register(TrainingAttendance)
 
 
-
