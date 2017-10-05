@@ -36,4 +36,6 @@ class EmployeeProfileEditView(UpdateView):
         return super(EmployeeProfileEditView, self).form_valid(form)
 
 
+class EmployeeProfileView(TemplateView):
+    template_name = 'profile.html'
 
