@@ -31,7 +31,7 @@
                     <table class="table tabel-custom">
                         <thead>
                             <tr>
-                                <th>#</th>
+                                <th>Emp Code</th>
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Training Status</th>
@@ -42,12 +42,12 @@
                          {% for employee in employees %}
                             <tr>
 
-                                <td data-label="#">1</td>
+                                <td data-label="Emp Code">{{employee.employee_code}}</td>
                                 <td data-label="Name">{{employee.employee_name}}</td>
                                 <td data-label="Email">{{employee.email}}</td>
                                 <td data-label="Training Status"><span class="label label-success">Complete</span></td>
                                 <td data-label="Action">
-                                    <button class="btn btn-info-cs btn-sm">Edit</button>
+                                    <a href="{% url 'edit_profile' employee.pk %}"><button class="btn btn-info-cs btn-sm">Edit</button></a>
                                     <button class="btn btn-danger btn-sm">Delete</button>
                                     <button class="btn btn-info-cs btn-sm">View</button>
                                 </td>

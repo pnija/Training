@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block content %}
+        <div class="content-bx">
+            <div class="top-box">
+                <div class="menu-responsive"><button class="menubtn" data-toggle="menu" data-target="#menubx"><i class="fa fa-bars"></i></button></div>
+
+                <ul class="menu-list-top">
+                    <li><img src="{% static 'Images/user.png'%}" class="img-user-pic" /></li>
+                </ul>
+            </div>
+            <!-- top-box End -->
+            <div class="contain-bx">
+                <h3>Employees Details</h3>
+
+                <div class="widget-box">
+                        <div class="col-sm-12">
+                                <h4>Uplode Your Avatar</h4>
+                                <hr />
+                            </div>
+                    <form method="post" enctype="multipart/form-data" novalidate>
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <div class="form-group text-center">
+                                            <div class="image-prof">
+                                                <img src="{{form.instance.profile_pic.url}}" class="user-avatar" />
+                                            </div>
+
+                                            <div class="uploder-group">
+                                                {{form.profile_pic|add_class:'file-uplode'}}
+                                                <button class="btn btn-info-cs">Choose File</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="colsm-12">
+                                    <div class="col-sm-12">
+                                        <h4>Personal Details</h4>
+                                        <hr />
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label>Name</label>
+                                        {{form.employee_name|add_class:'form-control'}}
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Gender</label>
+                                        {{form.gender|add_class:'form-control'}}
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>DOB</label>
+                                        {{form.date_of_birth|add_class:'form-control'}}
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Email Id</label>
+                                        {{form.email|add_class:'form-control'}}
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Contact Number</label>
+                                        <input type="text" class="form-control" />
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label>Address</label>
+                                        {{form.address|add_class:'form-control'}}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="colsm-12">
+                                    <div class="col-sm-12">
+                                        <h4>Company Details</h4>
+                                        <hr />
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-group">
+                                            <label>Employee Code</label>
+                                            {{form.employee_code|add_class:'form-control'}}
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Designation</label>
+                                       {{form.designation|add_class:'form-control'}}
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Date of Joining</label>
+                                        {{form.date_of_joining|add_class:'form-control'}}
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Location</label>
+                                        {{form.location|add_class:'form-control'}}
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label>Department</label>
+                                        {{form.department|add_class:'form-control'}}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12">
+                                <div class="form-group col-sm-12">
+                                    <button class="btn btn-info-cs">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+{% endblock content %}
+{% block js %}
+    <script>
+        $(function() {
+        $( ".datepicker" ).datepicker();
+  });
+    </script>
+
+{% endblock js %}

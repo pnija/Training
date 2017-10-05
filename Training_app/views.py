@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 
-from django.views.generic  import TemplateView,FormView
+from django.views.generic  import TemplateView,FormView,UpdateView
 from .models import *
 from .forms import MasterEmployeesForm
 
@@ -23,4 +23,17 @@ class AddEmployeeView(FormView):
     def form_valid(self, form):
         form.save()
         return super(AddEmployeeView, self).form_valid(form)
+
+
+class EmployeeProfileEditView(UpdateView):
+    template_name = 'form_update.html'
+    model = MasterEmployees
+    form_class = MasterEmployeesForm
+    success_url = '/training/home/'
+    
+    def form_valid(self, form):
+        form.save()
+        return super(EmployeeProfileEditView, self).form_valid(form)
+
+
 
