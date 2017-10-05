@@ -11,7 +11,7 @@ class DepartmentGroups(models.Model):
 
 class MasterDesignations(models.Model):
     designation_name = models.CharField(max_length=255)
-    department_group = models.ForeignKey(DepartmentGroups)
+    department_group = models.ForeignKey(DepartmentGroups, related_name='get_designations_by_group')
 
     def __unicode__(self):
         return self.designation_name
@@ -31,9 +31,9 @@ class EmployeeCategory(models.Model):
 class MasterEmployees(models.Model):
     employee_code = models.IntegerField(primary_key=True)
     employee_name = models.CharField(max_length=255)
-    category = models.ForeignKey(EmployeeCategory)
-    department = models.ForeignKey(Department)
-    designation = models.ForeignKey(MasterDesignations)
+    category = models.ForeignKey(EmployeeCategory, related_name='get_employess_in_category')
+    department = models.ForeignKey(Department, related_name='get_employess_in_department')
+    designation = models.ForeignKey(MasterDesignations, related_name='get_employess_by_designation')
 
     def __unicode__(self):
         return self.employee_name
@@ -52,16 +52,16 @@ class SkillTrainingTypes(models.Model):
 
 class MasterSkills(models.Model):
     skill = models.CharField(max_length=255)
-    training_type = models.ForeignKey(SkillTrainingTypes)
-    group = models.ForeignKey(SkillGroups)
+    training_type = models.ForeignKey(SkillTrainingTypes, related_name='get_skills_by_training_type')
+    group = models.ForeignKey(SkillGroups, related_name='get_skills_by_groups')
     required_level = models.FloatField(default=None, null=True, blank=True)
 
     def __unicode__(self):
         return self.skill
 
 class SkillDesignationMapping(models.Model):
-    designation = models.ForeignKey(MasterDesignations)
-    skills = models.ForeignKey(MasterSkills)
+    designation = models.ForeignKey(MasterDesignations, related_name='get_mapping_skill_designation_by_designation')
+    skills = models.ForeignKey(MasterSkills, related_name='get_mapping_skill_designation_by_skills')
     required_competance = models.CharField(max_length=255)
     responsibilities = models.CharField(max_length=255)
     reporting_to = models.CharField(max_length=255)
@@ -73,30 +73,37 @@ class SkillDesignationMapping(models.Model):
 
 
 class EmployeeSkillMapping(models.Model):
-    skill = models.ForeignKey(SkillDesignationMapping)
+    skill = models.ForeignKey(SkillDesignationMapping, related_name='get_employee_skill_mapping_by_designation_skills')
     competence = models.FloatField(default=None)
-    qc_inspector = models.ForeignKey(MasterEmployees)
+    qc_inspector = models.ForeignKey(MasterEmployees, related_name='get_employee_skill_mapping_by_employee')
     current_level = models.FloatField(default=None)
     skill_gap = models.FloatField(default=None)
 
+    def __unicode__(self):
+        return self.skill.designation.designation_name +'-'+self.qc_inspector.employee_name
+
 class TrainingSkillTracking(models.Model):
-    designation = models.ForeignKey(MasterDesignations)
-    skill = models.ForeignKey(SkillDesignationMapping)
+    designation = models.ForeignKey(MasterDesignations, related_name='get_skill_training_tracking_by_designation')
+    skill = models.ForeignKey(SkillDesignationMapping, related_name='get_skill_training_tracking_by_skills')
     required_level = models.FloatField(default=None)
     skill_needed = models.FloatField(default=None)
 
+    def __unicode__(self):
+        return self.skill.designation.designation_name
+
 class SkillTrainingShedule(models.Model):
-    skill = models.ForeignKey(MasterSkills)
-    trainer_designation = models.ForeignKey(MasterDesignations)
+    skill = models.ForeignKey(SkillDesignationMapping, related_name='get_training_schedule_by_designation_skills')
     trainer_name = models.CharField(max_length=255)
     plan_date = models.DateField()
     actual_date = models.DateField()
 
-class TrainingAttendance(models.Model):
-    skill = models.ForeignKey(MasterSkills)
-    trained_date = models.DateField()
-    trainee = models.ForeignKey(MasterEmployees)
+    def __unicode__(self):
+        return self.skill.skills.skill
 
-class TrainingSkillRequired(models.Model):
-    skill = models.ForeignKey(SkillDesignationMapping)
-    required_level = models.FloatField(default=None)
+class TrainingAttendance(models.Model):
+    skill = models.ForeignKey(MasterSkills, related_name='get_training_attendance_by_skill')
+    trained_date = models.DateField()
+    trainee = models.ForeignKey(MasterEmployees, related_name='get_training_attendance_by_employee')
+
+    def __unicode__(self):
+        return self.skill.skill
