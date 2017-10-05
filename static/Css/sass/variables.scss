@@ -1,0 +1,19 @@
+$cfnt : 'Roboto', sans-serif;
+$marz:0px;
+$padz: 0px;
+$info-clr : #6887ff;
+$info-dark-clr : #5377F8;
+$white-clr : #ffffff;
+$default-clr : #f0f0f0;
+$grid-xs: 540px;
+$grid-sm: 767px;
+$grid-m: 991px;
+$grid-l: 1366px;
+$grid-cus-m: 920px;
+$grid-cus-sm: 600px;
+@mixin transition($trans) {
+    -webkit-tansition: $trans;
+       -moz-tansition: $trans;
+        -ms-tansition: $trans;
+            tansition: $trans;
+  }

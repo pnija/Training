@@ -23,6 +23,9 @@ class MasterEmployes(models.Model):
     department = models.ForeignKey(Department)
     designation = models.ForeignKey(MasterDesignations)
 
+    def __unicode__(self):
+        return self.category
+
 class SkillGroups(models.Model):
     group_name = models.CharField(max_length=255)
 

@@ -1,0 +1,294 @@
+@import 'variables';
+@import '_bootstrap';
+body{
+    font-family: $cfnt;
+    margin: $marz;
+    padding: $padz;
+    font-size: 14px;
+    background-color: $default-clr;
+}
+.overlay {
+    display: block;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.58);
+    z-index: 1000;
+}
+.container-box{
+    width: 100%;
+    display: block;
+    position: relative;
+
+    .aside-menu{
+        display: block;
+        position: fixed!important;
+        z-index: 1030;
+        float: left;
+        background: #2e3648;
+        width: 280px;
+        height: 100%;
+        left: 0px;
+        top: 0px;
+        @include transition(all 300ms ease-in-out);
+
+        .logo-bx{
+            display: block;
+            position:  relative;
+            background-color: $info-dark-clr;
+
+            a{
+                font-size: 18px;
+                font-weight: 700;
+                color: $white-clr;
+                display: inline-block;
+                width: 100%;
+                padding: 20px;
+
+                &:hover{
+                    text-decoration: none;
+                }
+            }
+            
+        }
+
+        .menu-group{
+            list-style: none;
+            display: block;
+            position: relative;
+            margin: $marz;
+            padding: $padz;
+
+            li{
+                position: relative;
+                display: block;
+                color: #ffffff;
+                background-color: transparent;
+                @include transition(all 300ms ease-in-out);
+
+                &.active,
+                &:hover{
+                    background-color: #454d6d;
+                }
+
+                a{
+                    display: inline-block;
+                    position: relative;
+                    width: 100%;
+                    padding: 15px;
+                    color: #ffffff;
+                    @include transition(all 300ms ease-in-out);
+
+                    &:hover{
+                        text-decoration: none;
+                        color: $white-clr;
+                    }
+                }
+            }
+        }
+    }
+
+    .content-bx{
+        width: 100%;
+        padding-left: 280px;
+        position: relative;
+        min-height: 100vh;
+
+        .top-box{
+            background-color: $info-clr;
+            display: block;
+            position: fixed;
+            z-index: 1000;
+            left: 280px;
+            right: 0px;
+            height: 65px;
+            padding: 0px 15px;
+            text-align: right;
+
+            .menu-responsive{
+                position: relative;
+                margin: 10px 0px;
+                padding: $padz;
+                float: left;
+                display: none;
+
+                .menubtn{
+                    display: inline-block;
+                    position: relative;
+                    background-color: $info-clr;
+                    border: 1px solid transparent;
+                    padding: 10px 15px;
+                    color: $white-clr;
+                    @include transition(all 300ms ease-in-out);
+
+                    &:hover{
+                        background-color: $info-dark-clr;
+                    }
+                }
+            }
+
+            .menu-list-top{
+                list-style: none;
+                display: inline-block;
+                position: relative;
+
+                li{
+                    padding: 12px 5px;
+                }
+            }
+
+            .img-user-pic {
+                width: 100%;
+                display: inline-block;
+                position: relative;
+                max-width: 40px;
+            }
+        }
+
+        .footer-box{
+            position: absolute;
+            bottom: 0px;
+            left: 280px;
+            font-size: 12px;
+            right: 0px;
+            padding: 15px;
+            color: #949494;
+        }
+    }
+
+    .contain-bx{
+        display: block;
+        position: relative;
+        padding: 0px 20px;
+        padding-top: 85px;
+        margin-bottom: 15px;
+    }
+
+    .widget-box{
+        background-color: $white-clr;
+        padding: 15px;
+        position:  relative;
+        display: block;
+        border-radius: 3px;
+    }
+
+    table.tabel-custom{
+        margin-bottom:  0px;
+        border-bottom: 2px solid #B9B8B8;
+
+        td{
+            vertical-align: middle;
+        }
+    }
+}
+.middle-bx{
+    display: block;
+    position: relative;
+    max-width: 800px;
+}
+.form-control{
+    border-radius: 1px;
+    height: 45px;
+}
+.btn-info-cs{
+    background-color: $info-clr;
+    color: $white-clr;
+
+    &:hover,
+    &:active,
+    &:focus{
+        background-color: $info-dark-clr; 
+        color: $white-clr;
+    }
+}
+.limit-cntl-50{
+    width:50%;
+}
+
+@media(max-width: $grid-m){
+    .container-box{
+        width: 100%;
+        display: block;
+        position: relative;
+
+        .aside-menu{
+            display: block;
+            position: fixed!important;
+            z-index: 1030;
+            float: left;
+            background: #2e3648;
+            width: 280px;
+            height: 100%;
+            left: -100%;
+            @include transition(all 300ms ease-in-out);
+
+            &.open{
+                left: 0px;
+            }
+
+        }
+        
+        .content-bx {
+            width: 100%;
+            padding-left: 0px;
+            position: relative;
+            min-height: 100vh;
+
+            .top-box {
+                background-color: #6887ff;
+                display: block;
+                position: fixed;
+                z-index: 1000;
+                left: 0px;
+                right: 0px;
+                height: 65px;
+                padding: 0px 15px;
+                text-align: right;
+
+                .menu-responsive{
+                    position: relative;
+                    margin: 10px 0px;
+                    padding: $padz;
+                    float: left;
+                    display: block;
+                }
+            }
+
+            .footer-box{
+                position: absolute;
+                bottom: 0px;
+                left: 0px;
+                font-size: 12px;
+                right: 0px;
+                padding: 15px;
+                color: #949494;
+                display: none;
+            }
+        }
+
+        table.tabel-custom {
+            th{
+                display: none;
+            }
+
+            td{
+                display: block;
+                
+                &::before{
+                    content: attr(data-label);
+                    position: relative;
+                    display: block;
+                    font-weight: 700;
+                }
+
+                &:last-child{
+                    border-bottom: 2px solid #ccc;
+                }
+            }
+        }
+
+        
+    }
+}

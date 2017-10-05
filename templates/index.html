@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="container-box">
+        <!-- Side Menu -->
+        <aside class="aside-menu" id="menubx">
+            <div class="logo-bx">
+                <a href="#">Training</a>
+            </div>
+            <ul class="menu-group">
+                <li class="employee-icon active">
+                    <a href="#">Employees</a>
+                </li>
+                <li class="skill-icon">
+                    <a href="#">Skill Department</a>
+                </li>
+                <li class="training-icon">
+                    <a href="#">Training Topic</a>
+                </li>
+                <li class="training-icon">
+                    <a href="#">Logout</a>
+                </li>
+            </ul>
+        </aside>
+        <!-- Side Menu End -->
+
+        <div class="content-bx">
+            <div class="top-box">
+                <div class="menu-responsive"><button class="menubtn" data-toggle="menu" data-target="#menubx"><i class="fa fa-bars"></i></button></div>
+
+                <ul class="menu-list-top">
+                    <li><img src="{% static 'Images/user.png' %}" class="img-user-pic" /></li>
+                </ul>
+            </div>
+            <!-- top-box End -->
+
+            <div class="contain-bx">
+                <h3>Employees</h3>
+                <div class="widget-box">
+                    <div class="row" style="margin-bottom: 20px;">
+                        <div class="fom-group col-sm-6">
+                            <label>Search</label>
+                            <input type="text" class="form-control limit-cntl-50" />
+                        </div>
+
+                        <div class="fom-group col-sm-6 text-right">
+                            <label style="width: 100%;">Add a new Employee</label>
+                            <a href="/training/add-user/" class="btn btn-info-cs">+ Add</a>
+                        </div>
+                    </div>
+
+                    <table class="table tabel-custom">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Training Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-label="#">1</td>
+                                <td data-label="Name">John Fernado</td>
+                                <td data-label="Email">johnferna@example.com</td>
+                                <td data-label="Training Status"><span class="label label-success">Complete</span></td>
+                                <td data-label="Action">
+                                    <button class="btn btn-info-cs btn-sm">Edit</button>
+                                    <button class="btn btn-danger btn-sm">Delete</button>
+                                    <button class="btn btn-info-cs btn-sm">View</button>
+                                </td>
+                            </tr>
+                    </table>
+
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination">
+                            <li>
+                                <a href="#" aria-label="Previous">
+                                  <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li>
+                                <a href="#" aria-label="Next">
+                                  <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <!-- contain-bx end -->
+
+            <div class="footer-box">
+                Copyright &copy; 2017
+            </div>
+            <!-- foter-box End -->
+        </div>
+    </div>
+{% endblock content %}
+{% block js %}
+{% endblock js %}

@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="container-box">
+        <!-- Side Menu -->
+        <aside class="aside-menu" id="menubx">
+            <div class="logo-bx">
+                <a href="#">Training</a>
+            </div>
+            <ul class="menu-group">
+                <li class="employee-icon active">
+                    <a href="#">Employees</a>
+                </li>
+                <li class="skill-icon">
+                    <a href="#">Skill Department</a>
+                </li>
+                <li class="training-icon">
+                    <a href="#">Training Topic</a>
+                </li>
+                <li class="training-icon">
+                    <a href="#">Logout</a>
+                </li>
+            </ul>
+        </aside>
+        <!-- Side Menu End -->
+
+        <div class="content-bx">
+            <div class="top-box">
+                <div class="menu-responsive"><button class="menubtn" data-toggle="menu" data-target="#menubx"><i class="fa fa-bars"></i></button></div>
+
+                <ul class="menu-list-top">
+                    <li><img src="{% static 'Images/user.png' %}" class="img-user-pic" /></li>
+                </ul>
+            </div>
+            <!-- top-box End -->
+
+            <div class="contain-bx">
+                <h3>Employees</h3>
+                <div class="widget-box">
+                    <div class="middle-bx">
+                        <div class="row">
+
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label>Name</label>
+                                    <input type="text" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Gender</label>
+                                    <select class="form-control">
+                                        <option>
+                                            Select
+                                        </option>
+                                        <option>
+                                            Male
+                                        </option>
+                                        <option>
+                                            Female
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Employee Code</label>
+                                    <input type="text" class="form-control" />
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Desigination</label>
+                                    <input type="text" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Age</label>
+                                    <input type="text" class="form-control" />
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Company</label>
+                                    <input type="text" class="form-control" />
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Email Id</label>
+                                    <input type="text" class="form-control" />
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Contact Number</label>
+                                    <input type="text" class="form-control" />
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <button class="btn btn-info-cs">Submit</button>
+                                    </div>
+                                </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- contain-bx end -->
+
+            <div class="footer-box">
+                Copyright &copy; 2017
+            </div>
+            <!-- foter-box End -->
+        </div>
+    </div>
+{% endblock content %}
+{% block js %}
+{% endblock js %}
