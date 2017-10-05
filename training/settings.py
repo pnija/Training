@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Training_app',
     'django_extensions',
+    'widget_tweaks',
 
 ]
 

@@ -2,7 +2,10 @@ from django.db import models
 from django.contrib.auth.models import User
 # Create your models here.
 
-
+GENDER_CHOICES = (
+    ('Male', 'Male'),
+    ('Female', 'Female'),
+)
 class DepartmentGroups(models.Model):
     group_name = models.CharField(max_length=255)
 
@@ -30,12 +33,14 @@ class EmployeeCategory(models.Model):
 
 class MasterEmployees(models.Model):
     employee_code = models.IntegerField(primary_key=True)
+    category = models.ForeignKey(EmployeeCategory, related_name='get_employess_in_category',null=True,blank=True)
+    department = models.ForeignKey(Department, related_name='get_employess_in_department',null=True,blank=True)
+    designation = models.ForeignKey(MasterDesignations, related_name='get_employess_by_designation',null=True,blank=True)
     employee_name = models.CharField(max_length=255)
-    category = models.ForeignKey(EmployeeCategory, related_name='get_employess_in_category')
-    department = models.ForeignKey(Department, related_name='get_employess_in_department')
-    designation = models.ForeignKey(MasterDesignations, related_name='get_employess_by_designation')
+    gender = models.CharField(max_length=10, choices=GENDER_CHOICES, null=True, blank=True)
+    profile_pic = models.ImageField(upload_to='profile_pic',null=True,blank=True)
     address  = models.TextField(max_length=255)
-    dob = models.DateField(null=True,blank=True)
+    date_of_birth = models.DateField(null=True,blank=True)
     email = models.EmailField(max_length=40,null=True,blank=True)
     date_of_joining = models.DateField(null=True,blank=True)
     location = models.CharField(max_length=25,null=True,blank=True)
