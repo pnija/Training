@@ -1,28 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-    <div class="container-box">
-        <!-- Side Menu -->
-        <aside class="aside-menu" id="menubx">
-            <div class="logo-bx">
-                <a href="#">Training</a>
-            </div>
-            <ul class="menu-group">
-                <li class="employee-icon active">
-                    <a href="#">Employees</a>
-                </li>
-                <li class="skill-icon">
-                    <a href="#">Skill Department</a>
-                </li>
-                <li class="training-icon">
-                    <a href="#">Training Topic</a>
-                </li>
-                <li class="training-icon">
-                    <a href="#">Logout</a>
-                </li>
-            </ul>
-        </aside>
-        <!-- Side Menu End -->
+
 
         <div class="content-bx">
             <div class="top-box">
@@ -60,17 +39,21 @@
                             </tr>
                         </thead>
                         <tbody>
+                         {% for employee in employees %}
                             <tr>
+
                                 <td data-label="#">1</td>
-                                <td data-label="Name">John Fernado</td>
-                                <td data-label="Email">johnferna@example.com</td>
+                                <td data-label="Name">{{employee.employee_name}}</td>
+                                <td data-label="Email">{{employee.email}}</td>
                                 <td data-label="Training Status"><span class="label label-success">Complete</span></td>
                                 <td data-label="Action">
                                     <button class="btn btn-info-cs btn-sm">Edit</button>
                                     <button class="btn btn-danger btn-sm">Delete</button>
                                     <button class="btn btn-info-cs btn-sm">View</button>
                                 </td>
+
                             </tr>
+                        {% endfor %}
                     </table>
 
                     <nav aria-label="Page navigation">
@@ -94,14 +77,7 @@
                     </nav>
                 </div>
             </div>
-            <!-- contain-bx end -->
-
-            <div class="footer-box">
-                Copyright &copy; 2017
-            </div>
-            <!-- foter-box End -->
         </div>
-    </div>
 {% endblock content %}
 {% block js %}
 {% endblock js %}

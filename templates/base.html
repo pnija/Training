@@ -28,8 +28,41 @@
     <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
 
 </head>
-{% block content %}
-{% endblock content %}
+<body>
+     <div class="container-box">
+        <!-- Side Menu -->
+        <aside class="aside-menu" id="menubx">
+            <div class="logo-bx">
+                <a href="/training/home/">Training</a>
+            </div>
+            <ul class="menu-group">
+                <li class="employee-icon active">
+                    <a href="#">Employees</a>
+                </li>
+                <li class="skill-icon">
+                    <a href="#">Skill Department</a>
+                </li>
+                <li class="training-icon">
+                    <a href="#">Training Topic</a>
+                </li>
+                <li class="training-icon">
+                    <a href="#">Logout</a>
+                </li>
+            </ul>
+        </aside>
+                <!-- Side Menu End -->
+
+        {% block content %}
+        {% endblock content %}
+
+            <!-- contain-bx end -->
+
+            <div class="footer-box">
+                Copyright &copy; 2017
+            </div>
+            <!-- foter-box End -->
+         </div>
+</body>
 
     <script src="{% static 'Js/bootstrap.min.js' %}"></script>
     <script>

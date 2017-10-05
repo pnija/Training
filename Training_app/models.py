@@ -9,26 +9,25 @@ GENDER_CHOICES = (
 class DepartmentGroups(models.Model):
     group_name = models.CharField(max_length=255)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.group_name
 
 class MasterDesignations(models.Model):
     designation_name = models.CharField(max_length=255)
     department_group = models.ForeignKey(DepartmentGroups, related_name='get_designations_by_group')
 
-    def __unicode__(self):
+    def __str__(self):
         return self.designation_name
 
 class Department(models.Model):
     department_name = models.CharField(max_length=255)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.department_name
 
 class EmployeeCategory(models.Model):
     category_name = models.CharField(max_length=255)
-
-    def __unicode__(self):
+    def __str__(self):
         return self.category_name
 
 class MasterEmployees(models.Model):
@@ -44,19 +43,19 @@ class MasterEmployees(models.Model):
     email = models.EmailField(max_length=40,null=True,blank=True)
     date_of_joining = models.DateField(null=True,blank=True)
     location = models.CharField(max_length=25,null=True,blank=True)
-    def __unicode__(self):
+    def __str__(self):
         return self.employee_name
 
 class SkillGroups(models.Model):
     group_name = models.CharField(max_length=255)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.group_name
 
 class SkillTrainingTypes(models.Model):
     training_type = models.CharField(max_length=255)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.training_type
 
 class MasterSkills(models.Model):
@@ -65,7 +64,7 @@ class MasterSkills(models.Model):
     group = models.ForeignKey(SkillGroups, related_name='get_skills_by_groups')
     required_level = models.FloatField(default=None, null=True, blank=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.skill
 
 class SkillDesignationMapping(models.Model):
@@ -76,7 +75,7 @@ class SkillDesignationMapping(models.Model):
     reporting_to = models.CharField(max_length=255)
     authority = models.CharField(max_length=255)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.required_compatance
 
 
@@ -88,7 +87,7 @@ class EmployeeSkillMapping(models.Model):
     current_level = models.FloatField(default=None)
     skill_gap = models.FloatField(default=None)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.skill.designation.designation_name +'-'+self.qc_inspector.employee_name
 
 
@@ -98,7 +97,7 @@ class TrainingSkillTracking(models.Model):
     required_level = models.FloatField(default=None)
     skill_needed = models.FloatField(default=None)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.skill.designation.designation_name
 
 class SkillTrainingShedule(models.Model):
@@ -108,7 +107,7 @@ class SkillTrainingShedule(models.Model):
     plan_date = models.DateField()
     actual_date = models.DateField()
 
-    def __unicode__(self):
+    def __str__(self):
         return self.skill.skills.skill
 
 class TrainingAttendance(models.Model):
@@ -116,5 +115,5 @@ class TrainingAttendance(models.Model):
     trained_date = models.DateField()
     trainee = models.ForeignKey(MasterEmployees, related_name='get_training_attendance_by_employee')
 
-    def __unicode__(self):
+    def __str__(self):
         return self.skill.skill
