@@ -11,5 +11,10 @@ admin.site.register(SkillGroups)
 admin.site.register(SkillTrainingTypes)
 admin.site.register(MasterSkills)
 admin.site.register(SkillDesignationMapping)
+admin.site.register(EmployeeSkillMapping)
+admin.site.register(TrainingSkillTracking)
+admin.site.register(SkillTrainingShedule)
+admin.site.register(TrainingAttendance)
+
 
 

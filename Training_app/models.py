@@ -92,6 +92,7 @@ class TrainingSkillTracking(models.Model):
         return self.skill.designation.designation_name
 
 class SkillTrainingShedule(models.Model):
+    training_id = models.IntegerField(primary_key=True)
     skill = models.ForeignKey(SkillDesignationMapping, related_name='get_training_schedule_by_designation_skills')
     trainer_name = models.CharField(max_length=255)
     plan_date = models.DateField()
