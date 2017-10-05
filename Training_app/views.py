@@ -10,14 +10,19 @@ from .forms import MasterEmployeesForm
 class HomeView(TemplateView):
     template_name = 'index.html'
 
-class AddUserView(FormView):
+    def get_context_data(self, **kwargs):
+        context = super(HomeView, self).get_context_data(**kwargs)
+        context['employees'] = MasterEmployees.objects.all
+        return context
+
+class AddEmployeeView(FormView):
     template_name = 'form.html'
     form_class = MasterEmployeesForm
     success_url = '.'
 
     def form_valid(self, form):
         form.save()
-        return super(AddUserView, self).form_valid(form)
+        return super(AddEmployeeView, self).form_valid(form)
 
 class EmployeeProfileView(TemplateView):
     template_name = 'profile.html'
