@@ -23,21 +23,46 @@
             </ul>
         </aside>
         <!-- Side Menu End -->
+
         <div class="content-bx">
             <div class="top-box">
                 <div class="menu-responsive"><button class="menubtn" data-toggle="menu" data-target="#menubx"><i class="fa fa-bars"></i></button></div>
 
                 <ul class="menu-list-top">
-                    <li><img src="{% static 'Images/user.png' %}" class="img-user-pic" /></li>
+                    <li><img src="{% static 'Images/user.png'%}" class="img-user-pic" /></li>
                 </ul>
             </div>
             <!-- top-box End -->
-            <div class="contain-bx">
-                <h3>Employees</h3>
-                <div class="widget-box">
-                    <div class="middle-bx">
-                        <div class="row">
 
+            <div class="contain-bx">
+                <h3>Employees Details</h3>
+
+                <div class="widget-box">
+                        <div class="col-sm-12">
+                                <h4>Uplode Your Avatar</h4>
+                                <hr />
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <div class="form-group text-center">
+                                        <div class="image-prof">
+                                            <img src="{% static 'Images/user.png'%}" class="user-avatar" />
+                                        </div>
+                                        <div class="uploder-group">
+                                            <input type="file" class="file-uplode" />
+                                            <button class="btn btn-info-cs">Choose File</button> 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="colsm-12">
+                                <div class="col-sm-12">
+                                    <h4>Personal Details</h4>
+                                    <hr />
+                                </div>
+                            </div>
                             <div class="col-sm-12">
                                 <div class="form-group">
                                     <label>Name</label>
@@ -48,42 +73,22 @@
                                 <div class="form-group">
                                     <label>Gender</label>
                                     <select class="form-control">
-                                        <option>
-                                            Select
-                                        </option>
-                                        <option>
-                                            Male
-                                        </option>
-                                        <option>
-                                            Female
-                                        </option>
-                                    </select>
+                                            <option>
+                                                Select
+                                            </option>
+                                            <option>
+                                                Male
+                                            </option>
+                                            <option>
+                                                Female
+                                            </option>
+                                        </select>
                                 </div>
                             </div>
 
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label>Employee Code</label>
-                                    <input type="text" class="form-control" />
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label>Desigination</label>
-                                    <input type="text" class="form-control" />
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label>Age</label>
-                                    <input type="text" class="form-control" />
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label>Company</label>
+                                    <label>DOB</label>
                                     <input type="text" class="form-control" />
                                 </div>
                             </div>
@@ -103,19 +108,74 @@
                             </div>
 
                             <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label>Address</label>
+                                    <input type="text" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="colsm-12">
+                                <div class="col-sm-12">
+                                    <h4>Company Details</h4>
+                                    <hr />
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label>Company</label>
+                                    <input type="text" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
                                     <div class="form-group">
-                                        <button class="btn btn-info-cs">Submit</button>
+                                        <label>Employee Code</label>
+                                        <input type="text" class="form-control" />
                                     </div>
                                 </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Designation</label>
+                                    <input type="text" class="form-control" />
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Date of Joining</label>
+                                    <input type="text" class="form-control" />
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Location</label>
+                                    <input type="text" class="form-control" />
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label>Department</label>
+                                    <input type="text" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <div class="form-group col-sm-12">
+                                <button class="btn btn-info-cs">Submit</button>
+                            </div>
                         </div>
                     </div>
+
+
                 </div>
             </div>
-            <!-- contain-bx end -->
-            <div class="footer-box">
-                Copyright &copy; 2017
-            </div>
-            <!-- foter-box End -->
         </div>
     </div>
 {% endblock content %}

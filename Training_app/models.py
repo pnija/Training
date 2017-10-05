@@ -34,7 +34,11 @@ class MasterEmployees(models.Model):
     category = models.ForeignKey(EmployeeCategory, related_name='get_employess_in_category')
     department = models.ForeignKey(Department, related_name='get_employess_in_department')
     designation = models.ForeignKey(MasterDesignations, related_name='get_employess_by_designation')
-
+    address  = models.TextField(max_length=255)
+    dob = models.DateField(null=True,blank=True)
+    email = models.EmailField(max_length=40,null=True,blank=True)
+    date_of_joining = models.DateField(null=True,blank=True)
+    location = models.CharField(max_length=25,null=True,blank=True)
     def __unicode__(self):
         return self.employee_name
 
@@ -81,6 +85,7 @@ class EmployeeSkillMapping(models.Model):
 
     def __unicode__(self):
         return self.skill.designation.designation_name +'-'+self.qc_inspector.employee_name
+
 
 class TrainingSkillTracking(models.Model):
     designation = models.ForeignKey(MasterDesignations, related_name='get_skill_training_tracking_by_designation')
