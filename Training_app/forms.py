@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.admin.widgets import AdminDateWidget
-from .models import MasterEmployees
+from .models import MasterEmployees,MasterSkills
 
 
 class MasterEmployeesForm(forms.ModelForm):
@@ -13,3 +13,11 @@ class MasterEmployeesForm(forms.ModelForm):
         fields = ('employee_name','gender','employee_code',
                   'profile_pic','address','date_of_birth',
                   'email','date_of_joining','location','phone_number','department','designation')
+
+
+
+
+class MasterSkillsForm(forms.ModelForm):
+    class Meta:
+        model = MasterSkills
+        fields = ('skill',)

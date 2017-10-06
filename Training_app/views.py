@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect,HttpResponse
 from django.urls import reverse_lazy
-from django.views.generic  import TemplateView,FormView,UpdateView,View,DeleteView
+from django.views.generic  import TemplateView,FormView,UpdateView,View,DeleteView,CreateView,ListView
 from django.views.generic.detail import SingleObjectMixin
 from .models import *
 from .forms import MasterEmployeesForm
@@ -54,3 +54,13 @@ class EmployeeProfileDeleteView(View):
         return HttpResponseRedirect('/training/home/')
 
 
+class MasterSkillsAddView(CreateView):
+    template_name = 'skill.html'
+    model = MasterSkills
+    fields = ('skill',)
+    success_url ='/training/skill_list/'
+
+class MasterSkillListView(ListView):
+    template_name = 'skill_list.html'
+    model = MasterSkills
+    success_url = '/training/skill_list/'
