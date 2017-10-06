@@ -48,8 +48,8 @@
                                 <td data-label="Training Status"><span class="label label-success">Complete</span></td>
                                 <td data-label="Action">
                                     <a href="{% url 'edit_profile' employee.pk %}"><button class="btn btn-info-cs btn-sm">Edit</button></a>
-                                     <a><button class="btn btn-danger btn-sm" id="delete_employee" value="{{employee.pk}}">Delete</button></a>
-                                    <button class="btn btn-info-cs btn-sm">View</button>
+                                     <a><button class="btn btn-danger btn-sm delete_employee" value="{{employee.pk}}">Delete</button></a>
+                                    <a href="{% url 'profile' employee.pk %}" class="btn btn-info-cs btn-sm">View</a>
                                 </td>
 
                             </tr>
@@ -124,15 +124,12 @@
      }
 });
 
-    $('#delete_employee').on('click',function(){
+    $('body').on('click', '.delete_employee', function(){
         val = $(this).val()
-                    $.ajax({
-                    type: 'DELETE',
-                    url: '/training/delete_profile/'+val,
-                    success: function() {
-                    $('#myModal').modal('show')
-                }
-            });
+
+        if (confirm('Are you sure you want to delete {{employee.employee_name}}?')) {
+            window.location.href = '/training/delete_profile/'+val+'/'
+        }
 
     });
 </script>

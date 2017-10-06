@@ -2,8 +2,10 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect,HttpResponse
 from django.urls import reverse_lazy
 from django.views.generic  import TemplateView,FormView,UpdateView,View,DeleteView,CreateView,ListView
+from django.views.generic.detail import SingleObjectMixin
 from .models import *
 from .forms import MasterEmployeesForm
+
 
 
 
@@ -37,17 +39,19 @@ class EmployeeProfileEditView(UpdateView):
 
 
 class EmployeeProfileView(TemplateView):
-    template_name = 'profile.html'
+    def get(self, request, **kwargs):
+        pk = self.kwargs.get('pk')
+        employee_object = MasterEmployees.objects.get(pk = pk)
+        return render(request,'profile.html',{'employee_object':employee_object})
 
 
 
 class EmployeeProfileDeleteView(View):
 
-    def delete(self, request,**kwargs):
-        # delete an object and send a confirmation response
-        MasterEmployees.objects.get(employee_code=self.kwargs.get['pk']).delete()
-        return HttpResponse()
-
+    def get(self, *args, **kwargs):
+        id = self.kwargs.get('pk')
+        MasterEmployees.objects.get(employee_code = id).delete()
+        return HttpResponseRedirect('/training/home/')
 
 
 class MasterSkillsAddView(CreateView):

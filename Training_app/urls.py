@@ -23,7 +23,8 @@ urlpatterns = [
     url(r'^add-employee/(?P<pk>\d+)/$', EmployeeProfileEditView.as_view(),name='edit_profile'),
     url(r'^add-employee/', AddEmployeeView.as_view(),name='add-employee'),
     url(r'^delete_profile/(?P<pk>\d+)/$', EmployeeProfileDeleteView.as_view(),name='delete_profile'),
-    url(r'^user-profile/', EmployeeProfileView.as_view(), name='profile'),
+    url(r'^user-profile/(?P<pk>\d+)/', EmployeeProfileView.as_view(),name='profile'),
     url(r'^master-skills/', MasterSkillsAddView.as_view(), name='master_skills'),
     url(r'^skill_list/', MasterSkillListView.as_view(), name='master_skill_list'),
+
 ]
