@@ -14,7 +14,7 @@
             <!-- top-box End -->
 
             <div class="contain-bx">
-                <h3>Skill Listing</h3>
+                <h3>Skill Group</h3>
                 <div class="widget-box">
                     <div class="row" style="margin-bottom: 20px;">
                         <div class="fom-group col-sm-6">
@@ -23,8 +23,8 @@
                         </div>
 
                         <div class="fom-group col-sm-6 text-right">
-                            <label style="width: 100%;">Add a new Skill</label>
-                            <a href="/training/master-skills/" class="btn btn-info-cs">+ Add</a>
+                            <label style="width: 100%;">Add a new Group</label>
+                            <a href="/training/skill_group/" class="btn btn-info-cs">+ Add</a>
                         </div>
                     </div>
 
@@ -32,21 +32,19 @@
                         <thead>
                             <tr>
                                 <th>SI NO</th>
-                                <th>Skill</th>
-                                <th>Training Type</th>
                                 <th>Group</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                         {% for skilllist in object_list %}
+
+                         {% for skillgroup in object_list %}
                             <tr>
                                 <td data-label="SI NO">{{forloop.counter}}</td>
-                                <td data-label="Emp Code">{{skilllist.skill}}</td>
-                                 <td data-label="Name"></td>
-                                <td data-label="Email"></td>
+                                <td data-label="Emp Code">{{skillgroup.group_name}}</td>
+
                                 <td data-label="Action">
-                                    <a href="{% url 'master_skills_edit' skilllist.id %}"><button class="btn btn-info-cs btn-sm">Edit</button></a>
+                                    <button class="btn btn-info-cs btn-sm">Edit</button>
                                     <button class="btn btn-danger btn-sm">Delete</button>
                                     <button class="btn btn-info-cs btn-sm">View</button>
                                 </td>

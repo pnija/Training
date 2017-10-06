@@ -28,14 +28,11 @@ class AddEmployeeView(FormView):
 
 
 class EmployeeProfileEditView(UpdateView):
-    template_name = 'form_update.html'
+    template_name = 'form.html'
     model = MasterEmployees
     form_class = MasterEmployeesForm
     success_url = '/training/home/'
     
-    def form_valid(self, form):
-        form.save()
-        return super(EmployeeProfileEditView, self).form_valid(form)
 
 
 class EmployeeProfileView(TemplateView):
@@ -57,10 +54,36 @@ class EmployeeProfileDeleteView(View):
 class MasterSkillsAddView(CreateView):
     template_name = 'skill.html'
     model = MasterSkills
-    fields = ('skill',)
+    fields = '__all__'
     success_url ='/training/skill_list/'
 
 class MasterSkillListView(ListView):
     template_name = 'skill_list.html'
     model = MasterSkills
     success_url = '/training/skill_list/'
+
+class MasterSkillEditView(UpdateView):
+    template_name = 'skill.html'
+    model = MasterSkills
+    fields = '__all__'
+    success_url = '/training/skill_list/'
+
+class SkillGroupsAddView(CreateView):
+    template_name = 'skill_group.html'
+    model = SkillGroups
+    fields = ('group_name',)
+    success_url = '/training/skill_grouplist/'
+
+class SkillGroupsListView(ListView):
+    template_name = 'skillgrouplist.html'
+    model = SkillGroups
+    success_url = '.'
+
+class SkillGroupsEditView(UpdateView):
+    template_name = 'skillgrouplist.html'
+    model = SkillGroups
+    fields = '__all__'
+    success_url = '.'
+
+
+
