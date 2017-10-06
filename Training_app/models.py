@@ -108,6 +108,7 @@ class SkillTrainingShedule(models.Model):
     trainer_name = models.CharField(max_length=255)
     plan_date = models.DateField()
     actual_date = models.DateField()
+    topic = models.CharField(max_length=255)
 
     def __str__(self):
         return self.skill.skills.skill
