@@ -6,9 +6,10 @@ from .models import MasterEmployees
 class MasterEmployeesForm(forms.ModelForm):
     date_of_birth = forms.DateField(widget=forms.TextInput(attrs={'class':'datepicker'}))
     date_of_joining = forms.DateField(widget=forms.TextInput(attrs={'class':'datepicker'}))
+    profile_pic = forms.ImageField(required=True)
 
     class Meta:
         model = MasterEmployees
         fields = ('employee_name','gender','employee_code',
                   'profile_pic','address','date_of_birth',
-                  'email','date_of_joining','location','department','designation')
+                  'email','date_of_joining','location','phone_number','department','designation')

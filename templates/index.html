@@ -24,7 +24,7 @@
 
                         <div class="fom-group col-sm-6 text-right">
                             <label style="width: 100%;">Add a new Employee</label>
-                            <a href="/training/add-user/" class="btn btn-info-cs">+ Add</a>
+                            <a href="/training/add-employee/" class="btn btn-info-cs">+ Add</a>
                         </div>
                     </div>
 
@@ -48,7 +48,7 @@
                                 <td data-label="Training Status"><span class="label label-success">Complete</span></td>
                                 <td data-label="Action">
                                     <a href="{% url 'edit_profile' employee.pk %}"><button class="btn btn-info-cs btn-sm">Edit</button></a>
-                                    <button class="btn btn-danger btn-sm">Delete</button>
+                                     <a><button class="btn btn-danger btn-sm" id="delete_employee" value="{{employee.pk}}">Delete</button></a>
                                     <button class="btn btn-info-cs btn-sm">View</button>
                                 </td>
 
@@ -78,6 +78,62 @@
                 </div>
             </div>
         </div>
+
+ <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          <p>This is a small modal.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 {% endblock content %}
 {% block js %}
+<script>
+    $.ajaxSetup({
+     beforeSend: function(xhr, settings) {
+         function getCookie(name) {
+             var cookieValue = null;
+             if (document.cookie && document.cookie != '') {
+                 var cookies = document.cookie.split(';');
+                 for (var i = 0; i < cookies.length; i++) {
+                     var cookie = jQuery.trim(cookies[i]);
+                     // Does this cookie string begin with the name we want?
+                     if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                         cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                         break;
+                     }
+                 }
+             }
+             return cookieValue;
+         }
+         if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
+             // Only send the token to relative URLs i.e. locally.
+             xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+         }
+     }
+});
+
+    $('#delete_employee').on('click',function(){
+        val = $(this).val()
+                    $.ajax({
+                    type: 'DELETE',
+                    url: '/training/delete_profile/'+val,
+                    success: function() {
+                    $('#myModal').modal('show')
+                }
+            });
+
+    });
+</script>
 {% endblock js %}

@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import RegexValidator
 from django.contrib.auth.models import User
 # Create your models here.
 
@@ -31,6 +32,7 @@ class EmployeeCategory(models.Model):
         return self.category_name
 
 class MasterEmployees(models.Model):
+    phone_regex = RegexValidator(regex=r'^\+?1?\d{9,15}$', message="Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed.")
     employee_code = models.IntegerField(primary_key=True)
     category = models.ForeignKey(EmployeeCategory, related_name='get_employess_in_category',null=True,blank=True)
     department = models.ForeignKey(Department, related_name='get_employess_in_department',null=True,blank=True)
@@ -41,6 +43,7 @@ class MasterEmployees(models.Model):
     address  = models.TextField(max_length=255)
     date_of_birth = models.DateField(null=True,blank=True)
     email = models.EmailField(max_length=40,null=True,blank=True)
+    phone_number = models.CharField(validators=[phone_regex], max_length=15, blank=True)
     date_of_joining = models.DateField(null=True,blank=True)
     location = models.CharField(max_length=25,null=True,blank=True)
 
