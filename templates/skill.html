@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block content %}
+        <div class="content-bx">
+            <div class="top-box">
+                <div class="menu-responsive"><button class="menubtn" data-toggle="menu" data-target="#menubx"><i class="fa fa-bars"></i></button></div>
+
+                <ul class="menu-list-top">
+                    <li><img src="{% static 'Images/user.png'%} " class="img-user-pic" /></li>
+                </ul>
+            </div>
+            <!-- top-box End -->
+
+            <div class="contain-bx">
+                <h3>Skill</h3>
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+                <div class="widget-box">
+                    <div class="row">
+                        <div class="col-sm-12">
+                                <div class="colsm-12">
+                                        <div class="col-sm-12">
+                                            <h4>Department Details</h4>
+                                            <hr />
+                                        </div>
+                                    </div>
+                        </div>
+                        <div class="col-sm-6">
+                           
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label>Skill Name</label>
+                                    {{ form.skill|add_class:'form-control'}}
+                                    <!--<input type="text" class="form-control" />-->
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label>Skill Type</label>
+                                    <select class="form-control">
+                                        <option>Select</option>
+                                        <option>Type 1</option>
+                                        <option>Type 2</option>
+                                        <option>Type 3</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                        <div class="col-sm-6">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label>Group Type</label>
+                                        <select class="form-control">
+                                            <option>Select</option>
+                                            <option>Type 1</option>
+                                            <option>Type 2</option>
+                                            <option>Type 3</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                            </div>
+
+                        <div class="col-sm-12">
+                            <div class="form-group col-sm-12">
+                                <button class="btn btn-info-cs">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    </form>
+            </div>
+        </div>
+        <!-- contain-bx end -->
+
+
+{% endblock content %}
+{% block js %}
+{% endblock js %}

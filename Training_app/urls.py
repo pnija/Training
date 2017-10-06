@@ -14,7 +14,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url,static
-from .views import HomeView,AddEmployeeView,EmployeeProfileEditView,EmployeeProfileView,EmployeeProfileDeleteView
+from .views import HomeView,AddEmployeeView,EmployeeProfileEditView,EmployeeProfileView,EmployeeProfileDeleteView,\
+    MasterSkillsAddView,MasterSkillListView
+
 
 urlpatterns = [
     url(r'^home/', HomeView.as_view(),name='home'),
@@ -22,4 +24,6 @@ urlpatterns = [
     url(r'^add-employee/', AddEmployeeView.as_view(),name='add-employee'),
     url(r'^delete_profile/(?P<pk>\d+)/$', EmployeeProfileDeleteView.as_view(),name='delete_profile'),
     url(r'^user-profile/', EmployeeProfileView.as_view(), name='profile'),
+    url(r'^master-skills/', MasterSkillsAddView.as_view(), name='master_skills'),
+    url(r'^skill_list/', MasterSkillListView.as_view(), name='master_skill_list'),
 ]

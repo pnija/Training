@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Training Project</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
+    <link href="Assets/Fonts/font/flaticon.css" rel="stylesheet">
+    <link href="Assets/Fonts/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- Css -->
+    <link href="Assets/Css/admin.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="Assets/Js/jquery.min.js"></script>
+
+</head>
+
+<body>
+    <div class="container-box">
+        <!-- Side Menu -->
+        <aside class="aside-menu" id="menubx">
+            <div class="logo-bx">
+                <a href="#">Training</a>
+            </div>
+            <ul class="menu-group">
+                <li class="employee-icon">
+                    <a href="#">Employees</a>
+                </li>
+                <li class="skill-icon">
+                    <a href="#">Skill Department</a>
+                </li>
+                <li class="training-icon active">
+                    <a href="#">Skills</a>
+                </li>
+                <li class="training-icon">
+                    <a href="#">Training Topic</a>
+                </li>
+                <li class="training-icon">
+                    <a href="#">Logout</a>
+                </li>
+            </ul>
+        </aside>
+        <!-- Side Menu End -->
+
+        <div class="content-bx">
+            <div class="top-box">
+                <div class="menu-responsive"><button class="menubtn" data-toggle="menu" data-target="#menubx"><i class="fa fa-bars"></i></button></div>
+
+                <ul class="menu-list-top">
+                    <li><img src="Assets/Images/user.png" class="img-user-pic" /></li>
+                </ul>
+            </div>
+            <!-- top-box End -->
+
+            <div class="contain-bx">
+                <h3>Designation</h3>
+
+                <div class="widget-box">
+                    <div class="row">
+                        <div class="col-sm-12">
+                                <div class="colsm-12">
+                                        <div class="col-sm-12">
+                                            <h4>Designation Details</h4>
+                                            <hr />
+                                        </div>
+                                    </div>
+                        </div>
+                        <div class="col-sm-6">
+                           
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label>Designation Name</label>
+                                    <input type="text" class="form-control" />
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label>Designation Group</label>
+                                    <select class="form-control">
+                                        <option>Select</option>
+                                        <option>Type 1</option>
+                                        <option>Type 2</option>
+                                        <option>Type 3</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                        </div>
+
+
+                        <div class="col-sm-12">
+                            <div class="form-group col-sm-12">
+                                <button class="btn btn-info-cs">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <!-- contain-bx end -->
+
+    <script src="Assets/Js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(document).on('click', '[data-toggle="menu"]', function () {
+                var thisc = $(this), ele = $(thisc).data('target'), fndtar = $(document).find(ele);
+                $(thisc).addClass('open');
+                $(fndtar).addClass('open');
+                $('body').append('<div class="overlay"></div>')
+            });
+            $(document).on('click', '.overlay', function () {
+                var thisd = $(this), fndtar = $(document).find('#menubx');
+                $(fndtar).removeClass('open');
+                $('body').find('.overlay').remove()
+            });
+        });
+    </script>
+</body>
+
+</html>

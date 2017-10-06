@@ -64,8 +64,8 @@ class SkillTrainingTypes(models.Model):
 
 class MasterSkills(models.Model):
     skill = models.CharField(max_length=255)
-    training_type = models.ForeignKey(SkillTrainingTypes, related_name='get_skills_by_training_type')
-    group = models.ForeignKey(SkillGroups, related_name='get_skills_by_groups')
+    training_type = models.ForeignKey(SkillTrainingTypes, related_name='get_skills_by_training_type',null=True,blank=True)
+    group = models.ForeignKey(SkillGroups, related_name='get_skills_by_groups',null=True,blank=True)
 
     def __str__(self):
         return self.skill

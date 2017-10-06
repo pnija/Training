@@ -40,7 +40,18 @@
                     <a href="#">Employees</a>
                 </li>
                 <li class="skill-icon">
-                    <a href="#">Skill Department</a>
+                    <span data-toggle="slidemenu">Skill</span>
+                    <ul class="submenu" data-role="submenu">
+                        <li class="active">
+                            <a href="#">Skills</a>
+                        </li>
+                        <li class="active">
+                                <a href="#">Skills2</a>
+                            </li>
+                    </ul>
+                </li>
+                <li class="skill-icon">
+                    <a href="#">Department </a>
                 </li>
                 <li class="training-icon">
                     <a href="#">Training Topic</a>
@@ -77,6 +88,11 @@
                 var thisd = $(this), fndtar = $(document).find('#menubx');
                 $(fndtar).removeClass('open');
                 $('body').find('.overlay').remove()
+            });
+            //slide Menu
+            $(document).on('click', '[data-toggle="slidemenu"]', function () {
+                var thisr = $(this), fndtar = $(document).find('[data-role="submenu"]');
+                $(thisr).parent().toggleClass('active');
             });
         });
     </script>
