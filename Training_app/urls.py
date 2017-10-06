@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url,static
 from .views import HomeView,AddEmployeeView,EmployeeProfileEditView,EmployeeProfileView,EmployeeProfileDeleteView,\
-    MasterSkillsAddView,MasterSkillListView
+    MasterSkillsAddView,MasterSkillListView,MasterSkillEditView,SkillGroupsAddView,SkillGroupsListView
 
 
 urlpatterns = [
@@ -24,7 +24,10 @@ urlpatterns = [
     url(r'^add-employee/', AddEmployeeView.as_view(),name='add-employee'),
     url(r'^delete_profile/(?P<pk>\d+)/$', EmployeeProfileDeleteView.as_view(),name='delete_profile'),
     url(r'^user-profile/(?P<pk>\d+)/', EmployeeProfileView.as_view(),name='profile'),
+    url(r'^master-skills/(?P<pk>\d+)/', MasterSkillEditView.as_view(), name='master_skills_edit'),
     url(r'^master-skills/', MasterSkillsAddView.as_view(), name='master_skills'),
     url(r'^skill_list/', MasterSkillListView.as_view(), name='master_skill_list'),
+    url(r'^skill_group/', SkillGroupsAddView.as_view(), name='skill_group'),
+    url(r'^skill_grouplist/', SkillGroupsListView.as_view(), name='skill_group_list'),
 
 ]
