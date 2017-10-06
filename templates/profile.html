@@ -22,14 +22,14 @@
                         <div class="col-sm-4 col-md-2 ">
                             <div class="form-group text-center" style="margin-top: 15px;">
                                 <div class="image-prof">
-                                    <img src="{{employee_object.profile_pic.url}}" class="user-avatar-pic" />
+                                    <img src="{{object.profile_pic.url}}" class="user-avatar-pic" />
                                 </div>
                             </div>
                         </div>
                         <div class="col-sm-8 col-md-5">
                             <div class="form-group user-bx">
-                                <h3>{{employee_object.employee_name}}</h3>
-                                <p>{{employee_object.designation}}@ <b>Techversant</b></p>
+                                <h3>{{object.employee_name}}</h3>
+                                <p>{{object.designation}}@ <b>Techversant</b></p>
                             </div>
                         </div>
                     </div>
@@ -38,7 +38,7 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label>Gender : </label>
-                                <span class="full-width">{{employee_object.gender}}</span>
+                                <span class="full-width">{{object.gender}}</span>
                                 <hr />
                             </div>
                         </div>
@@ -46,7 +46,7 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label>DOB : </label>
-                                <span class="full-width">{{employee_object.date_of_birth|date:"d/m/y"}}</span>
+                                <span class="full-width">{{object.date_of_birth|date:"d/m/y"}}</span>
                                 <hr />
                             </div>
                         </div>
@@ -54,7 +54,7 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label>Email Id : </label>
-                                <span class="full-width">{{employee_object.email}}</span>
+                                <span class="full-width">{{object.email}}</span>
                                 <hr />
                             </div>
                         </div>
@@ -62,7 +62,7 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label>Contact Number : </label>
-                                <span class="full-width">{{employee_object.phone_number}}</span>
+                                <span class="full-width">{{object.phone_number}}</span>
                                 <hr />
                             </div>
                         </div>
@@ -70,7 +70,7 @@
                         <div class="col-sm-12">
                             <div class="form-group">
                                 <label>Address : </label>
-                                <span class="full-width">{{employee_object.address}}</span>
+                                <span class="full-width">{{object.address}}</span>
                             </div>
                         </div>
                     </div>
@@ -80,7 +80,7 @@
                             <div class="form-group">
                                 <div class="form-group">
                                     <label>Employee Code</label>
-                                    <span class="full-width">{{employee_object.employee_code}}</span>
+                                    <span class="full-width">{{object.employee_code}}</span>
                                     <hr />
                                 </div>
                             </div>
@@ -89,7 +89,7 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label>Date of Joining</label>
-                                <span class="full-width">{{employee_object.date_of_joining|date:"d/m/y"}}</span>
+                                <span class="full-width">{{object.date_of_joining|date:"d/m/y"}}</span>
                                 <hr />
                             </div>
                         </div>
@@ -97,14 +97,14 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label>Location</label>
-                                <span class="full-width">{{employee_object.location}}</span>
+                                <span class="full-width">{{object.location}}</span>
                             </div>
                         </div>
 
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label>Department</label>
-                                <span class="full-width">{{employee_object.department}}</span>
+                                <span class="full-width">{{object.department}}</span>
                             </div>
                         </div>
                     </div>
@@ -112,7 +112,7 @@
                     <div class="col-sm-12">
                         <hr />
                         <div class="form-group col-sm-12">
-                            <a href="{% url 'edit_profile' employee_object.pk %}" class="btn btn-info-cs">Edit</a>
+                            <a href="{% url 'edit_profile' object.pk %}" class="btn btn-info-cs">Edit</a>
                         </div>
                     </div>
                 </div>

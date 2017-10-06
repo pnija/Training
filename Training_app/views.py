@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect,HttpResponse
 from django.urls import reverse_lazy
-from django.views.generic  import TemplateView,FormView,UpdateView,View,DeleteView,CreateView,ListView
+from django.views.generic  import TemplateView,FormView,UpdateView,View,DeleteView,CreateView,ListView,DetailView
 from django.views.generic.detail import SingleObjectMixin
 from .models import *
 from .forms import MasterEmployeesForm
@@ -35,12 +35,9 @@ class EmployeeProfileEditView(UpdateView):
     
 
 
-class EmployeeProfileView(TemplateView):
-    def get(self, request, **kwargs):
-        pk = self.kwargs.get('pk')
-        employee_object = MasterEmployees.objects.get(pk = pk)
-        return render(request,'profile.html',{'employee_object':employee_object})
-
+class EmployeeProfileView(DetailView):
+    template_name = 'profile.html'
+    model = MasterEmployees
 
 
 class EmployeeProfileDeleteView(View):
@@ -55,18 +52,19 @@ class MasterSkillsAddView(CreateView):
     template_name = 'skill.html'
     model = MasterSkills
     fields = '__all__'
-    success_url ='/training/skill_list/'
+    success_url ='/training/skill-list/'
 
 class MasterSkillListView(ListView):
     template_name = 'skill_list.html'
     model = MasterSkills
-    success_url = '/training/skill_list/'
+    success_url = '/training/skill-list/'
+
 
 class MasterSkillEditView(UpdateView):
     template_name = 'skill.html'
     model = MasterSkills
     fields = '__all__'
-    success_url = '/training/skill_list/'
+    success_url = '/training/skill-list/'
 
 class SkillGroupsAddView(CreateView):
     template_name = 'skill_group.html'
@@ -85,5 +83,25 @@ class SkillGroupsEditView(UpdateView):
     fields = '__all__'
     success_url = '.'
 
+class ListDeparmentView(ListView):
+    template_name = 'department_list.html'
+    model = Department
+    success_url = '.'
 
+class AddDepartmentView(CreateView):
+    template_name = 'add_department.html'
+    model = Department
+    fields = ('department_name',)
+    success_url = '/training/department-list/'
 
+class DepartmentEditView(UpdateView):
+    template_name = 'add_department.html'
+    model = Department
+    fields = ('department_name',)
+    success_url = '/training/department-list/'
+
+class DepartmentDeleteView(View):
+    def get(self, *args, **kwargs):
+        id = self.kwargs.get('pk')
+        Department.objects.get(id = id).delete()
+        return HttpResponseRedirect('/training/department-list/')

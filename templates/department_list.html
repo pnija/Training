@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+        <div class="content-bx">
+            <div class="top-box">
+                <div class="menu-responsive"><button class="menubtn" data-toggle="menu" data-target="#menubx"><i class="fa fa-bars"></i></button></div>
+
+                <ul class="menu-list-top">
+                    <li><img src="{% static 'Images/user.png' %}" class="img-user-pic"/></li>
+                </ul>
+            </div>
+            <!-- top-box End -->
+
+            <div class="contain-bx">
+                <h3>Department Listing</h3>
+                <div class="widget-box">
+                    <div class="row" style="margin-bottom: 20px;">
+                        <div class="fom-group col-sm-6">
+                            <label>Search</label>
+                            <input type="text" class="form-control limit-cntl-50" />
+                        </div>
+
+                        <div class="fom-group col-sm-6 text-right">
+                            <label style="width: 100%;">Add a new Department</label>
+                            <a href="/training/add-department/" class="btn btn-info-cs">+ Add</a>
+                        </div>
+                    </div>
+
+                    <table class="table tabel-custom">
+                        <thead>
+                            <tr>
+                                <th>SI NO</th>
+                                <th>Department</th>
+                                <th>Training Type</th>
+                                <th>Group</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                         {% for departments in object_list %}
+                            <tr>
+                                <td data-label="SI NO">{{forloop.counter}}</td>
+                                <td data-label="Emp Code">{{departments.department_name}}</td>
+                                 <td data-label="Name"></td>
+                                <td data-label="Email"></td>
+                                <td data-label="Action">
+                                    <a href="/training/edit-department/{{departments.id}}/"><button class="btn btn-info-cs btn-sm">Edit</button></a>
+                                    <a href="/training/delete_department/{{departments.id}}/" class="btn btn-danger btn-sm">Delete</a>
+                                    <button class="btn btn-info-cs btn-sm">View</button>
+                                </td>
+
+                            </tr>
+                        {% endfor %}
+                    </table>
+
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination">
+                            <li>
+                                <a href="#" aria-label="Previous">
+                                  <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li>
+                                <a href="#" aria-label="Next">
+                                  <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+{% endblock content %}
+{% block js %}
+
+    $('body').on('click', '.delete_employee', function(){
+        val = $(this).val()
+
+        if (confirm('Are you sure you want to delete {{employee.employee_name}}?')) {
+            window.location.href = '/training/delete_department/'+val+'/'
+        }
+
+    });
+{% endblock js %}

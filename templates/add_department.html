@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block content %}
+
+        <div class="content-bx">
+            <div class="top-box">
+                <div class="menu-responsive"><button class="menubtn" data-toggle="menu" data-target="#menubx"><i class="fa fa-bars"></i></button></div>
+
+                <ul class="menu-list-top">
+                    <li><img src="{% static 'Images/user.png' %}" class="img-user-pic" /></li>
+                </ul>
+            </div>
+            <!-- top-box End -->
+            <form method="post">
+                {% csrf_token %}
+                <div class="contain-bx">
+                    <h3>Department</h3>
+
+                    <div class="widget-box">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="colsm-12">
+                                    <div class="col-sm-12">
+                                        <h4>Department Details</h4>
+                                        <hr />
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label>Department Name</label>
+                                        {{ form.department_name|add_class:'form-control'}}
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="col-sm-12">
+                                <div class="form-group col-sm-12">
+                                    <button class="btn btn-info-cs" type="submit">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    {% endblock content  %}
+    <script src="Assets/Js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(document).on('click', '[data-toggle="menu"]', function () {
+                var thisc = $(this), ele = $(thisc).data('target'), fndtar = $(document).find(ele);
+                $(thisc).addClass('open');
+                $(fndtar).addClass('open');
+                $('body').append('<div class="overlay"></div>')
+            });
+            $(document).on('click', '.overlay', function () {
+                var thisd = $(this), fndtar = $(document).find('#menubx');
+                $(fndtar).removeClass('open');
+                $('body').find('.overlay').remove()
+            });
+        });
+    </script>
+</body>
+
+</html>
